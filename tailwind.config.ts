@@ -61,9 +61,9 @@ const config: Config = {
           '5': 'hsl(var(--chart-5))',
         },
         techphite: {
-          cyan: '#00C2A8',
-          dark: '#0A0E27',
-          darker: '#050812',
+          cyan: 'hsl(var(--primary))',
+          dark: 'hsl(var(--background))',
+          darker: 'hsl(var(--background))',
         },
       },
       keyframes: {
