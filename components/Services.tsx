@@ -24,24 +24,6 @@ const services = [
     description: 'Mantén tu sitio actualizado, seguro y funcionando perfectamente 24/7.',
     features: ['Actualizaciones', 'Backups diarios', 'Monitoreo continuo', 'Soporte técnico'],
   },
-  {
-    icon: Search,
-    title: 'SEO Avanzado',
-    description: 'Posiciona tu negocio en los primeros resultados de Google y atrae más clientes.',
-    features: ['Análisis de keywords', 'Optimización técnica', 'Link building', 'Reportes mensuales'],
-  },
-  {
-    icon: TrendingUp,
-    title: 'Marketing Digital',
-    description: 'Estrategias integrales para aumentar tu visibilidad y ventas en línea.',
-    features: ['Social Media', 'Campañas ads', 'Email marketing', 'Analítica web'],
-  },
-  {
-    icon: Globe,
-    title: 'Presencia Digital',
-    description: 'Construye una marca sólida en redes sociales y plataformas digitales.',
-    features: ['Gestión de redes', 'Contenido estratégico', 'Community management', 'Branding'],
-  },
 ];
 
 export default function Services() {
@@ -113,21 +95,6 @@ export default function Services() {
             </motion.div>
           ))}
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="text-center mt-12"
-        >
-          <Button
-            onClick={() => document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })}
-            size="lg"
-            className="bg-techphite-cyan hover:bg-techphite-cyan/90 text-white font-semibold px-8"
-          >
-            Consulta gratuita
-          </Button>
-        </motion.div>
       </div>
     </section>
   );

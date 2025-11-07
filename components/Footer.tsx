@@ -4,10 +4,7 @@ import { motion } from 'framer-motion';
 import { Facebook, Instagram, Linkedin, Twitter, Mail, Phone } from 'lucide-react';
 
 const socialLinks = [
-  { icon: Facebook, href: '#', label: 'Facebook' },
-  { icon: Instagram, href: '#', label: 'Instagram' },
-  { icon: Linkedin, href: '#', label: 'LinkedIn' },
-  { icon: Twitter, href: '#', label: 'Twitter' },
+  { icon: Instagram, href: 'https://www.instagram.com/techphite/', label: 'Instagram' },
 ];
 
 const quickLinks = [
@@ -22,7 +19,6 @@ const services = [
   'Desarrollo Web',
   'Diseño Web',
   'SEO',
-  'Marketing Digital',
   'Mantenimiento',
 ];
 
@@ -130,20 +126,6 @@ export default function Footer() {
                 </a>
               </li>
             </ul>
-
-            <div className="mt-6 glass-effect rounded-lg p-4">
-              <p className="text-sm text-gray-400 mb-2">Newsletter</p>
-              <div className="flex gap-2">
-                <input
-                  type="email"
-                  placeholder="Tu email"
-                  className="flex-1 px-3 py-2 bg-techphite-darker border border-gray-700 rounded text-sm text-white placeholder:text-gray-500 focus:outline-none focus:border-techphite-cyan"
-                />
-                <button className="px-4 py-2 bg-techphite-cyan hover:bg-techphite-cyan/90 rounded text-white text-sm font-semibold transition-colors">
-                  OK
-                </button>
-              </div>
-            </div>
           </motion.div>
         </div>
 

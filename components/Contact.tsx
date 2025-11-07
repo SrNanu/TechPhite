@@ -112,6 +112,7 @@ export default function Contact() {
             </div>
 
             <div>
+              <a href="https://wa.me/5493416912227?text=Hola, estoy interesado en sus servicios" target="_blank" rel="noopener noreferrer">
               <Button
                 onClick={handleWhatsApp}
                 className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-6 text-lg"
@@ -120,86 +121,20 @@ export default function Contact() {
                 <Phone className="w-5 h-5 mr-2" />
                 Contactar por WhatsApp
               </Button>
+              </a>
             </div>
 
             <div className="glass-effect rounded-xl p-6">
               <h4 className="text-white font-semibold mb-4">Horario de Atención</h4>
               <div className="space-y-2 text-gray-400">
-                <p>Lunes - Viernes: 9:00 AM - 6:00 PM</p>
-                <p>Sábados: 10:00 AM - 2:00 PM</p>
-                <p className="text-techphite-cyan font-semibold">¡Respuesta en 24 horas!</p>
+              <p>Lunes - Viernes: 9:00 AM - 6:00 PM</p>
+              <p>Sábados: 10:00 AM - 2:00 PM</p>
+              <p className="text-techphite-cyan font-semibold">¡Respuesta en 24 horas!</p>
               </div>
             </div>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            <form onSubmit={handleSubmit} className="glass-effect rounded-xl p-8 space-y-6">
-              <div>
-                <label htmlFor="name" className="text-white font-semibold mb-2 block">
-                  Nombre completo
-                </label>
-                <Input
-                  id="name"
-                  type="text"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  placeholder="Tu nombre"
-                  required
-                  className="bg-techphite-dark border-gray-700 text-white placeholder:text-gray-500 focus:border-techphite-cyan"
-                />
-              </div>
 
-              <div>
-                <label htmlFor="email" className="text-white font-semibold mb-2 block">
-                  Email
-                </label>
-                <Input
-                  id="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  placeholder="tu@email.com"
-                  required
-                  className="bg-techphite-dark border-gray-700 text-white placeholder:text-gray-500 focus:border-techphite-cyan"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="message" className="text-white font-semibold mb-2 block">
-                  Mensaje
-                </label>
-                <Textarea
-                  id="message"
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  placeholder="Cuéntanos sobre tu proyecto..."
-                  required
-                  rows={6}
-                  className="bg-techphite-dark border-gray-700 text-white placeholder:text-gray-500 focus:border-techphite-cyan resize-none"
-                />
-              </div>
-
-              <Button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-techphite-cyan hover:bg-techphite-cyan/90 text-white font-semibold py-6 text-lg neon-glow"
-                size="lg"
-              >
-                {isSubmitting ? (
-                  'Enviando...'
-                ) : (
-                  <>
-                    <Send className="w-5 h-5 mr-2" />
-                    Enviar mensaje
-                  </>
-                )}
-              </Button>
-            </form>
-          </motion.div>
         </div>
       </div>
     </section>

@@ -48,7 +48,7 @@ export default function About() {
             </h2>
             <p className="text-gray-400 text-lg leading-relaxed mb-6">
               Somos una agencia digital especializada en transformar ideas en experiencias web
-              impactantes. Con más de 5 años de experiencia, ayudamos a empresas de todos los
+              impactantes. Con más de 3 años de experiencia, ayudamos a empresas de todos los
               tamaños a establecer y fortalecer su presencia en línea.
             </p>
             <p className="text-gray-400 text-lg leading-relaxed mb-8">

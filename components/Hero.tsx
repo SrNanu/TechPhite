@@ -5,12 +5,15 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, Sparkles } from 'lucide-react';
 
 export default function Hero() {
-  const handleCTA = () => {
-    document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' });
-  };
+  // Array de estadísticas para que sea más fácil de añadir más en el futuro
+  const stats = [
+    { value: '3+', label: 'Años de Experiencia' },
+    { value: '24/7', label: 'Soporte Dedicado' },
+  ];
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* --- Fondo con gradiente y partículas animadas --- */}
       <div className="absolute inset-0 bg-gradient-to-br from-techphite-darker via-techphite-dark to-techphite-darker">
         <div className="absolute inset-0">
           {[...Array(50)].map((_, i) => (
@@ -35,6 +38,7 @@ export default function Hero() {
         </div>
       </div>
 
+      {/* --- Efecto de luz radial --- */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,194,168,0.1),transparent_50%)]"></div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -79,7 +83,7 @@ export default function Hero() {
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <Button
-              onClick={handleCTA}
+              onClick={() => window.open('https://api.whatsapp.com/send/?phone=5493416912227&text=Hola+TechPhite%21+Quiero+hacer+una+consulta', '_blank')}
               size="lg"
               className="bg-techphite-cyan hover:bg-techphite-cyan/90 text-white font-semibold px-8 py-6 text-lg group neon-glow"
             >
@@ -92,35 +96,23 @@ export default function Hero() {
                 <ArrowRight className="w-5 h-5" />
               </motion.div>
             </Button>
-
-            <Button
-              onClick={() => document.getElementById('servicios')?.scrollIntoView({ behavior: 'smooth' })}
-              size="lg"
-              variant="outline"
-              className="border-techphite-cyan text-techphite-cyan hover:bg-techphite-cyan/10 px-8 py-6 text-lg"
-            >
-              Ver servicios
-            </Button>
           </motion.div>
 
+          {/* --- SECCIÓN DE ESTADÍSTICAS CENTRADA --- */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1 }}
-            className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
+            // Clases para centrar horizontalmente con Flexbox
+            className="mt-20 flex justify-center items-center gap-8"
           >
-            {[
-              { value: '100+', label: 'Proyectos' },
-              { value: '50+', label: 'Clientes' },
-              { value: '5+', label: 'Años' },
-              { value: '24/7', label: 'Soporte' },
-            ].map((stat, index) => (
+            {stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.2 + index * 0.1 }}
-                className="glass-effect p-4 rounded-lg"
+                className="glass-effect p-4 rounded-lg flex flex-col items-center min-w-[140px]" // Ancho mínimo para consistencia
               >
                 <div className="text-3xl font-bold text-techphite-cyan mb-1">{stat.value}</div>
                 <div className="text-sm text-gray-400">{stat.label}</div>
@@ -130,10 +122,11 @@ export default function Hero() {
         </div>
       </div>
 
+      {/* --- Indicador de scroll --- */}
       <motion.div
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2"
       >
         <div className="w-6 h-10 border-2 border-techphite-cyan rounded-full flex items-start justify-center p-2">
           <motion.div
