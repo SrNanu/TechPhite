@@ -15,8 +15,10 @@ import { Dialog, DialogContent } from '@/components/ui/dialog';
 import segurosBurzacoImg from '@/assets/segurosBurzaco.png';
 import rymBrokpasImg from '@/assets/rymSeguros.png';
 import mandatosDigitalesImg from '@/assets/gestoriaIntegralLilianaDiaz.png';
+import club9deJulioImg from '@/assets/club9dejulioberabevu.png';
+import arielPiermatteiImg from '@/assets/arielpiermattei.png';
 
-const categories = ['Todos', 'Landing Page', 'Corporativo'];
+const categories = ['Todos', 'Landing Page', 'Corporativo', 'Plataforma'];
 
 // <-- 3. DATOS DEL PORTAFOLIO ACTUALIZADOS
 const projects = [
@@ -26,19 +28,19 @@ const projects = [
     category: 'Landing Page',
     image: segurosBurzacoImg,
     description: 'Landing page profesional para asesores de seguros, enfocada en la confianza y el contacto directo.',
-    tech: ['WordPress', 'Elementor', 'PHP', 'CSS'],
+    tech: ['React', 'Vite', 'Tailwind CSS', 'Framer Motion'],
     results: ['Diseño limpio y profesional', 'Optimizado para SEO local', 'Integración con WhatsApp'],
-    link: 'https://www.segurosburzaco.com.ar/', // Opcional: añade el enlace real
+    link: 'https://segurosburzaco.com', // Opcional: añade el enlace real
   },
   {
     id: 2,
-    title: 'RyM Brokpas',
+    title: 'RyM Seguros',
     category: 'Corporativo',
     image: rymBrokpasImg,
     description: 'Sitio corporativo para productores de seguros, con un enfoque en la familia y la seguridad del hogar.',
     tech: ['WordPress', 'Elementor', 'PHP', 'CSS'],
     results: ['Aumento de la confianza del cliente', 'Navegación intuitiva', 'Formulario de denuncias'],
-    link: '#',
+    link: 'https://rymseguros.com.ar',
   },
   {
     id: 3,
@@ -46,9 +48,29 @@ const projects = [
     category: 'Landing Page',
     image: mandatosDigitalesImg,
     description: 'Plataforma digital para gestoría automotor, notarial y judicial. Simplifica trámites complejos.',
-    tech: ['WordPress', 'Elementor', 'PHP', 'CSS'],
+    tech: ['React', 'Vite', 'Tailwind CSS', 'Framer Motion'],
     results: ['Claridad en los servicios ofrecidos', 'Fácil acceso a contacto', 'Diseño moderno y accesible'],
-    link: '#',
+    link: 'https://gestoriaintegraldiaz.com/',
+  },
+  {
+    id: 4,
+    title: 'Club 9 de Julio',
+    category: 'Plataforma',
+    image: club9deJulioImg,
+    description: 'Plataforma digital integral para gestión de contenidos, socios y gamificación deportiva. Incluye CMS a medida y sistema de Prode.',
+    tech: ['React', 'Vite', 'Tailwind CSS', 'Node.js'],
+    results: ['Gestión 100% autónoma de contenidos', 'Engagement con gamificación (Prode)', 'Modernización administrativa'],
+    link: 'https://club9dejulioberabevu.com',
+  },
+  {
+    id: 5,
+    title: 'Ariel Piermattei',
+    category: 'Plataforma',
+    image: arielPiermatteiImg,
+    description: 'Una aplicación web full-stack desarrollada para gestionar y exhibir un inventario de vehículos. La plataforma ofrece una experiencia de usuario fluida con catálogo interactivo y panel de administración.',
+    tech: ['React', 'Vite', 'Tailwind', 'Node.js', 'Express', 'PostgreSQL', 'n8n'],
+    results: ['Catálogo interactivo con filtros', 'Panel de administración protegido', 'Integración automatizada con n8n'],
+    link: 'https://arielpiermattei.com',
   },
 ];
 
@@ -147,7 +169,7 @@ export default function Portfolio() {
       </div>
 
       <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
-        <DialogContent className="max-w-3xl bg-techphite-dark border-techphite-cyan/20 text-white">
+        <DialogContent className="max-w-3xl bg-techphite-dark border-techphite-cyan/20 text-white max-h-[90vh] overflow-y-auto">
           {selectedProject && (
             <div className="space-y-6 p-2">
               <div className="relative aspect-video rounded-lg overflow-hidden">

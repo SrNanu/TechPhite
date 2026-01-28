@@ -2,27 +2,33 @@
 
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Globe, Search, Wrench, TrendingUp, Code, Palette } from 'lucide-react';
+import { Globe, Bot, Cpu, Database, Code, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const services = [
   {
     icon: Code,
     title: 'Desarrollo Web',
-    description: 'Sitios web modernos, rápidos y optimizados para convertir visitantes en clientes.',
-    features: ['Diseño responsive', 'Optimización SEO', 'Alta performance', 'Seguridad avanzada'],
+    description: 'Sitios web modernos y aplicaciones a medida optimizadas para el rendimiento y la conversión.',
+    features: ['Diseño responsive', 'Optimización SEO', 'E-commerce', 'Landing Pages'],
   },
   {
-    icon: Palette,
-    title: 'Diseño Web',
-    description: 'Diseños únicos y personalizados que reflejan la identidad de tu marca.',
-    features: ['UI/UX profesional', 'Branding coherente', 'Experiencia premium', 'Mobile-first'],
+    icon: Zap,
+    title: 'Automatización',
+    description: 'Optimizamos tus flujos de trabajo conectando aplicaciones para ahorrar tiempo y reducir errores.',
+    features: ['Integración de APIs', 'Workflows automáticos', 'Ahorro de costos', 'Eficiencia operativa'],
   },
   {
-    icon: Wrench,
-    title: 'Mantenimiento',
-    description: 'Mantén tu sitio actualizado, seguro y funcionando perfectamente 24/7.',
-    features: ['Actualizaciones', 'Backups diarios', 'Monitoreo continuo', 'Soporte técnico'],
+    icon: Bot,
+    title: 'Bots IA',
+    description: 'Implementamos asistentes virtuales inteligentes para mejorar la atención al cliente 24/7.',
+    features: ['Soporte 24/7', 'IA Generativa', 'Auto-respuestas', 'Calificación de leads'],
+  },
+  {
+    icon: Database,
+    title: 'Sistemas de Gestión',
+    description: 'Software a medida para la administración integral de tu negocio, stock y clientes.',
+    features: ['Paneles de control', 'Gestión de stock', 'CRMs a medida', 'Reportes y métricas'],
   },
 ];
 
@@ -46,11 +52,11 @@ export default function Services() {
             <span className="text-techphite-cyan">Servicios</span>
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Soluciones completas para llevar tu negocio al mundo digital
+            Soluciones tecnológicas integrales para escalar tu negocio
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service, index) => (
             <motion.div
               key={service.title}
@@ -71,13 +77,13 @@ export default function Services() {
                   {service.title}
                 </h3>
 
-                <p className="text-gray-400 mb-4 leading-relaxed">
+                <p className="text-gray-400 mb-4 leading-relaxed text-sm">
                   {service.description}
                 </p>
 
                 <ul className="space-y-2 mb-6">
                   {service.features.map((feature) => (
-                    <li key={feature} className="flex items-center text-sm text-gray-500">
+                    <li key={feature} className="flex items-center text-xs text-gray-500">
                       <div className="w-1.5 h-1.5 rounded-full bg-techphite-cyan mr-2"></div>
                       {feature}
                     </li>
@@ -87,7 +93,7 @@ export default function Services() {
                 <Button
                   onClick={() => document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })}
                   variant="ghost"
-                  className="text-techphite-cyan hover:text-techphite-cyan hover:bg-techphite-cyan/10 w-full"
+                  className="text-techphite-cyan hover:text-techphite-cyan hover:bg-techphite-cyan/10 w-full mt-auto"
                 >
                   Saber más
                 </Button>

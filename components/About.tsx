@@ -52,7 +52,7 @@ export default function About() {
               tamaños a establecer y fortalecer su presencia en línea.
             </p>
             <p className="text-gray-400 text-lg leading-relaxed mb-8">
-              Nuestro equipo de expertos combina creatividad, tecnología y estrategia para
+              Combinamos creatividad, tecnología y estrategia para
               desarrollar soluciones personalizadas que no solo se ven bien, sino que generan
               resultados medibles para tu negocio.
             </p>

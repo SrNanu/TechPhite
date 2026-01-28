@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -40,9 +41,14 @@ export default function Header() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.2 }}
         >
-          <a href="#home" className="text-2xl font-bold">
-            <span className="text-white">Tech</span>
-            <span className="text-techphite-cyan">Phite</span>
+          <a href="#home" className="block w-40 relative h-12">
+             <Image 
+               src="/logo.png" 
+               alt="TechPhite Logo" 
+               fill 
+               className="object-contain object-left"
+               priority
+             />
           </a>
         </motion.div>
 
