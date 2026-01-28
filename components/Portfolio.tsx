@@ -44,7 +44,7 @@ const projects = [
   },
   {
     id: 3,
-    title: 'Mandatos Digitales',
+    title: 'Gestoria Integral Liliana Diaz',
     category: 'Landing Page',
     image: mandatosDigitalesImg,
     description: 'Plataforma digital para gestoría automotor, notarial y judicial. Simplifica trámites complejos.',
