@@ -2,29 +2,29 @@
 
 import { motion } from 'framer-motion';
 import { Facebook, Instagram, Linkedin, Twitter, Mail, Phone } from 'lucide-react';
+import Link from 'next/link';
 
 const socialLinks = [
   { icon: Instagram, href: 'https://www.instagram.com/techphite/', label: 'Instagram' },
 ];
 
 const quickLinks = [
-  { label: 'Inicio', href: '#home' },
-  { label: 'Servicios', href: '#servicios' },
-  { label: 'Portafolio', href: '#portafolio' },
-  { label: 'Nosotros', href: '#nosotros' },
+  { label: 'Inicio', href: '/' },
+  { label: 'Clubes', href: '/clubes' },
+  { label: 'Catálogos', href: '/catalogos' },
+  { label: 'Seguros', href: '/seguros' },
   { label: 'Contacto', href: '#contacto' },
 ];
 
-const services = [
-  'Desarrollo Web',
-  'Diseño Web',
-  'SEO',
-  'Mantenimiento',
+const solutions = [
+  { label: 'Clubes e Instituciones', href: '/clubes' },
+  { label: 'Catálogos de Productos', href: '/catalogos' },
+  { label: 'Productores de Seguros', href: '/seguros' },
 ];
 
 export default function Footer() {
   return (
-    <footer className="relative bg-techphite-dark pt-20 pb-10">
+    <footer id="contacto" className="relative bg-techphite-dark pt-20 pb-10">
       <div className="absolute inset-0 bg-gradient-to-b from-techphite-darker to-techphite-dark"></div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -36,10 +36,10 @@ export default function Footer() {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <a href="#home" className="text-3xl font-bold mb-4 block">
+              <Link href="/" className="text-3xl font-bold mb-4 block">
                 <span className="text-white">Tech</span>
                 <span className="text-techphite-cyan">Phite</span>
-              </a>
+              </Link>
               <p className="text-gray-400 mb-6 leading-relaxed">
                 Transformamos ideas en experiencias digitales impactantes que impulsan tu negocio.
               </p>
@@ -69,14 +69,13 @@ export default function Footer() {
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="text-gray-400 hover:text-techphite-cyan transition-colors relative group"
-                  >
-                    <span className="inline-block group-hover:translate-x-2 transition-transform">
-                      {link.label}
-                    </span>
-                  </a>
+                  <Link href={link.href} legacyBehavior passHref>
+                    <a className="text-gray-400 hover:text-techphite-cyan transition-colors relative group">
+                      <span className="inline-block group-hover:translate-x-2 transition-transform">
+                        {link.label}
+                      </span>
+                    </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -88,18 +87,17 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <h3 className="text-white font-bold text-lg mb-4">Servicios</h3>
+            <h3 className="text-white font-bold text-lg mb-4">Soluciones</h3>
             <ul className="space-y-3">
-              {services.map((service) => (
-                <li key={service}>
-                  <a
-                    href="#servicios"
-                    className="text-gray-400 hover:text-techphite-cyan transition-colors relative group"
-                  >
-                    <span className="inline-block group-hover:translate-x-2 transition-transform">
-                      {service}
-                    </span>
-                  </a>
+              {solutions.map((solution) => (
+                <li key={solution.href}>
+                  <Link href={solution.href} legacyBehavior passHref>
+                    <a className="text-gray-400 hover:text-techphite-cyan transition-colors relative group">
+                      <span className="inline-block group-hover:translate-x-2 transition-transform">
+                        {solution.label}
+                      </span>
+                    </a>
+                  </Link>
                 </li>
               ))}
             </ul>

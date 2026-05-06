@@ -43,15 +43,7 @@ export default function Hero() {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-effect mb-8"
-          >
-            <Sparkles className="w-4 h-4 text-techphite-cyan" />
-            <span className="text-sm text-gray-300">Soluciones digitales a medida</span>
-          </motion.div>
+
 
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -59,10 +51,10 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
           >
-            <span className="text-white">Potenciamos tu</span>
+            <span className="text-white">Transformación digital</span>
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-techphite-cyan to-blue-400">
-              presencia digital
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">
+              para negocios reales
             </span>
           </motion.h1>
 
@@ -72,8 +64,7 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.4 }}
             className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto"
           >
-            Transformamos tus ideas en experiencias digitales impactantes. Diseño web, SEO y marketing
-            que impulsan tu negocio al siguiente nivel.
+            Encontrá la solución exacta para tu rubro. Sistemas de gestión, catálogos online y páginas web diseñadas para hacer crecer tu negocio.
           </motion.p>
 
           <motion.div
@@ -83,11 +74,13 @@ export default function Hero() {
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <Button
-              onClick={() => window.open('https://api.whatsapp.com/send/?phone=5493416912227&text=Hola+TechPhite%21+Quiero+hacer+una+consulta', '_blank')}
+              onClick={() => {
+                document.getElementById('industrias')?.scrollIntoView({ behavior: 'smooth' });
+              }}
               size="lg"
-              className="bg-techphite-cyan hover:bg-techphite-cyan/90 text-white font-semibold px-8 py-6 text-lg group neon-glow"
+              className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 py-6 text-lg group shadow-[0_0_20px_rgba(249,115,22,0.3)] transition-all"
             >
-              Empezar ahora
+              Ver Soluciones
               <motion.div
                 className="inline-block ml-2"
                 animate={{ x: [0, 5, 0] }}

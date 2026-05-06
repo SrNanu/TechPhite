@@ -1,22 +1,25 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const navItems = [
-  { label: 'Inicio', href: '#home' },
-  { label: 'Servicios', href: '#servicios' },
-  { label: 'Portafolio', href: '#portafolio' },
-  { label: 'Nosotros', href: '#nosotros' },
+  { label: 'Inicio', href: '/' },
+  { label: 'Clubes', href: '/clubes' },
+  { label: 'Catálogos', href: '/catalogos' },
+  { label: 'Seguros', href: '/seguros' },
   { label: 'Contacto', href: '#contacto' },
 ];
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,7 +44,7 @@ export default function Header() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.2 }}
         >
-          <a href="#home" className="block w-40 relative h-12">
+          <Link href="/" className="block w-40 relative h-12">
              <Image 
                src="/logo.png" 
                alt="TechPhite Logo" 
@@ -49,23 +52,36 @@ export default function Header() {
                className="object-contain object-left"
                priority
              />
-          </a>
+          </Link>
         </motion.div>
 
         <div className="hidden md:flex items-center gap-8">
-          {navItems.map((item, index) => (
-            <motion.a
-              key={item.href}
-              href={item.href}
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 + index * 0.1 }}
-              className="text-gray-300 hover:text-techphite-cyan transition-colors relative group"
-            >
-              {item.label}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-techphite-cyan transition-all group-hover:w-full"></span>
-            </motion.a>
-          ))}
+          {navItems.map((item, index) => {
+            const isActive = pathname === item.href;
+            return (
+              <Link key={item.href} href={item.href} legacyBehavior passHref>
+                <motion.a
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 + index * 0.1 }}
+                  className={`transition-colors relative group ${
+                    isActive ? 'text-techphite-cyan font-semibold' : 'text-gray-300 hover:text-techphite-cyan'
+                  }`}
+                  onClick={(e) => {
+                    if (item.href.startsWith('#')) {
+                      e.preventDefault();
+                      document.querySelector(item.href)?.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
+                >
+                  {item.label}
+                  <span className={`absolute -bottom-1 left-0 h-0.5 bg-techphite-cyan transition-all ${
+                    isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                  }`}></span>
+                </motion.a>
+              </Link>
+            );
+          })}
         </div>
 
         <motion.div
@@ -78,7 +94,7 @@ export default function Header() {
             onClick={() => {
               document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="bg-techphite-cyan hover:bg-techphite-cyan/90 text-white font-semibold"
+            className="bg-orange-500 hover:bg-orange-600 shadow-[0_0_15px_rgba(249,115,22,0.3)] text-white font-semibold transition-all"
           >
             Empezar ahora
           </Button>
@@ -100,22 +116,33 @@ export default function Header() {
           className="md:hidden glass-effect"
         >
           <div className="container mx-auto px-4 py-6 flex flex-col gap-4">
-            {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="text-gray-300 hover:text-techphite-cyan transition-colors py-2"
-              >
-                {item.label}
-              </a>
-            ))}
+            {navItems.map((item) => {
+              const isActive = pathname === item.href;
+              return (
+                <Link key={item.href} href={item.href} legacyBehavior passHref>
+                  <a
+                    onClick={(e) => {
+                      setIsMobileMenuOpen(false);
+                      if (item.href.startsWith('#')) {
+                        e.preventDefault();
+                        document.querySelector(item.href)?.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
+                    className={`transition-colors py-2 ${
+                      isActive ? 'text-techphite-cyan font-semibold' : 'text-gray-300 hover:text-techphite-cyan'
+                    }`}
+                  >
+                    {item.label}
+                  </a>
+                </Link>
+              );
+            })}
             <Button
               onClick={() => {
                 setIsMobileMenuOpen(false);
                 document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="bg-techphite-cyan hover:bg-techphite-cyan/90 text-white font-semibold w-full"
+              className="bg-orange-500 hover:bg-orange-600 shadow-[0_0_15px_rgba(249,115,22,0.3)] text-white font-semibold w-full transition-all"
             >
               Empezar ahora
             </Button>
