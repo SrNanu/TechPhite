@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { Headset, Code2, Briefcase, Zap } from 'lucide-react';
 
 // ─── Orden y span del Bento Grid ──────────────────────────────────────────────
@@ -37,7 +37,7 @@ const bentoItems = [
   },
 ];
 
-const cardVariants = {
+const cardVariants: Variants = {
   hidden: { opacity: 0, y: 32 },
   show: (i: number) => ({
     opacity: 1,

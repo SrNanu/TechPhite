@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { Instagram, Mail, Phone } from 'lucide-react';
 import Link from 'next/link';
 
@@ -35,7 +35,7 @@ const contactItems = [
   },
 ];
 
-const colVariants = (delay: number) => ({
+const colVariants = (delay: number): Variants => ({
   hidden: { opacity: 0, y: 20 },
   show: { opacity: 1, y: 0, transition: { duration: 0.55, delay, ease: 'easeOut' } },
 });
