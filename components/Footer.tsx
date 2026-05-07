@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Facebook, Instagram, Linkedin, Twitter, Mail, Phone } from 'lucide-react';
+import { Instagram, Mail, Phone } from 'lucide-react';
 import Link from 'next/link';
 
 const socialLinks = [
@@ -22,123 +22,151 @@ const solutions = [
   { label: 'Productores de Seguros', href: '/seguros' },
 ];
 
+const contactItems = [
+  {
+    icon: Mail,
+    href: 'mailto:contacto@techphite.com',
+    label: 'contacto@techphite.com',
+  },
+  {
+    icon: Phone,
+    href: 'tel:+5493416912227',
+    label: '+54 9 341 691-2227',
+  },
+];
+
+const colVariants = (delay: number) => ({
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.55, delay, ease: 'easeOut' } },
+});
+
 export default function Footer() {
   return (
-    <footer id="contacto" className="relative bg-techphite-dark pt-20 pb-10">
-      <div className="absolute inset-0 bg-gradient-to-b from-techphite-darker to-techphite-dark"></div>
+    <footer id="contacto" className="relative bg-slate-950 border-t border-white/10">
+      {/* Ambient glow */}
+      <div className="absolute bottom-0 inset-x-0 h-64 bg-gradient-to-t from-orange-950/10 to-transparent pointer-events-none" />
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-          <div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <Link href="/" className="text-3xl font-bold mb-4 block">
-                <span className="text-white">Tech</span>
-                <span className="text-techphite-cyan">Phite</span>
-              </Link>
-              <p className="text-gray-400 mb-6 leading-relaxed">
-                Transformamos ideas en experiencias digitales impactantes que impulsan tu negocio.
-              </p>
-              <div className="flex gap-4">
-                {socialLinks.map((social) => (
-                  <motion.a
-                    key={social.label}
-                    href={social.href}
-                    whileHover={{ scale: 1.1, y: -5 }}
-                    className="w-10 h-10 rounded-full bg-gradient-to-br from-techphite-cyan to-blue-500 flex items-center justify-center hover:shadow-lg hover:shadow-techphite-cyan/50 transition-all"
-                    aria-label={social.label}
-                  >
-                    <social.icon className="w-5 h-5 text-white" />
-                  </motion.a>
-                ))}
-              </div>
-            </motion.div>
-          </div>
+      <div className="container mx-auto px-4 relative z-10 py-16">
+        {/* ── Main grid ── */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
 
+          {/* Col 1 — Brand */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            variants={colVariants(0)}
+            initial="hidden"
+            whileInView="show"
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <h3 className="text-white font-bold text-lg mb-4">Enlaces Rápidos</h3>
+            <Link href="/" className="text-2xl font-bold mb-4 block">
+              <span className="text-white">Tech</span>
+              <span className="text-sky-400">Phite</span>
+            </Link>
+            <p className="text-slate-400 leading-relaxed text-sm mb-6">
+              Transformamos ideas en experiencias digitales impactantes que impulsan tu negocio.
+            </p>
+
+            {/* Social icons */}
+            <div className="flex gap-3">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  className="bg-white/5 border border-white/10 text-slate-300 hover:bg-orange-500 hover:text-white hover:border-orange-500 rounded-xl p-3 transition-all duration-300 w-fit"
+                >
+                  <social.icon className="w-4 h-4" />
+                </a>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Col 2 — Quick links */}
+          <motion.div
+            variants={colVariants(0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+          >
+            <h3 className="text-slate-100 font-semibold mb-6">Enlaces Rápidos</h3>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} legacyBehavior passHref>
-                    <a className="text-gray-400 hover:text-techphite-cyan transition-colors relative group">
-                      <span className="inline-block group-hover:translate-x-2 transition-transform">
-                        {link.label}
-                      </span>
-                    </a>
+                  <Link
+                    href={link.href}
+                    className="text-slate-400 text-sm inline-block hover:text-orange-500 hover:translate-x-1 transition-all duration-300"
+                  >
+                    {link.label}
                   </Link>
                 </li>
               ))}
             </ul>
           </motion.div>
 
+          {/* Col 3 — Solutions */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            variants={colVariants(0.2)}
+            initial="hidden"
+            whileInView="show"
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <h3 className="text-white font-bold text-lg mb-4">Soluciones</h3>
+            <h3 className="text-slate-100 font-semibold mb-6">Soluciones</h3>
             <ul className="space-y-3">
               {solutions.map((solution) => (
                 <li key={solution.href}>
-                  <Link href={solution.href} legacyBehavior passHref>
-                    <a className="text-gray-400 hover:text-techphite-cyan transition-colors relative group">
-                      <span className="inline-block group-hover:translate-x-2 transition-transform">
-                        {solution.label}
-                      </span>
-                    </a>
+                  <Link
+                    href={solution.href}
+                    className="text-slate-400 text-sm inline-block hover:text-orange-500 hover:translate-x-1 transition-all duration-300"
+                  >
+                    {solution.label}
                   </Link>
                 </li>
               ))}
             </ul>
           </motion.div>
 
+          {/* Col 4 — Contact */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            variants={colVariants(0.3)}
+            initial="hidden"
+            whileInView="show"
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
           >
-            <h3 className="text-white font-bold text-lg mb-4">Contacto</h3>
+            <h3 className="text-slate-100 font-semibold mb-6">Contacto</h3>
             <ul className="space-y-4">
-              <li className="flex items-start gap-3 text-gray-400">
-                <Mail className="w-5 h-5 text-techphite-cyan flex-shrink-0 mt-1" />
-                <a href="mailto:contacto@techphite.com" className="hover:text-techphite-cyan transition-colors">
-                  contacto@techphite.com
-                </a>
-              </li>
-              <li className="flex items-start gap-3 text-gray-400">
-                <Phone className="w-5 h-5 text-techphite-cyan flex-shrink-0 mt-1" />
-                <a href="tel:+5493416912227" className="hover:text-techphite-cyan transition-colors">
-                  +54 9 341 691-2227
-                </a>
-              </li>
+              {contactItems.map((item) => (
+                <li key={item.href}>
+                  <a
+                    href={item.href}
+                    className="flex items-center gap-3 text-slate-400 text-sm hover:text-orange-500 transition-colors duration-300 group"
+                  >
+                    <item.icon className="w-4 h-4 text-orange-500 flex-shrink-0" />
+                    <span className="group-hover:translate-x-0.5 transition-transform duration-300">
+                      {item.label}
+                    </span>
+                  </a>
+                </li>
+              ))}
             </ul>
           </motion.div>
         </div>
 
+        {/* ── Bottom bar ── */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="pt-8 border-t border-gray-800 text-center"
+          className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-3"
         >
-          <p className="text-gray-500 text-sm">
+          <p className="text-slate-500 text-sm">
             &copy; {new Date().getFullYear()} TechPhite. Todos los derechos reservados.
           </p>
-          <p className="text-gray-600 text-xs mt-2">
-            Diseño y desarrollo con <span className="text-techphite-cyan">♥</span> en Argentina
+          <p className="text-slate-500 text-sm">
+            Diseño y desarrollo con{' '}
+            <span className="text-orange-500">♥</span>{' '}
+            en Argentina
           </p>
         </motion.div>
       </div>

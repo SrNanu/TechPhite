@@ -1,4 +1,4 @@
-import Header from '@/components/Header';
+
 import Footer from '@/components/Footer';
 import CatalogosHero from '@/components/CatalogosHero';
 import CatalogosProblems from '@/components/CatalogosProblems';
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export default function CatalogosPage() {
   return (
     <main className="min-h-screen bg-techphite-darker">
-      <Header />
+
       <CatalogosHero />
       <CatalogosProblems />
       <CatalogosSolutions />

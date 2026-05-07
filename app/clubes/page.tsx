@@ -1,4 +1,4 @@
-import Header from '@/components/Header';
+
 import Footer from '@/components/Footer';
 import ClubesHero from '@/components/ClubesHero';
 import ClubesProblems from '@/components/ClubesProblems';
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export default function ClubesPage() {
   return (
     <main className="min-h-screen bg-techphite-darker">
-      <Header />
+
       <ClubesHero />
       <ClubesProblems />
       <ClubesSolutions />

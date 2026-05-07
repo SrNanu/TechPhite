@@ -1,4 +1,4 @@
-import Header from '@/components/Header';
+
 import Footer from '@/components/Footer';
 import SegurosHero from '@/components/SegurosHero';
 import SegurosOfferings from '@/components/SegurosOfferings';
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 export default function SegurosPage() {
   return (
     <main className="min-h-screen bg-techphite-darker">
-      <Header />
+
       <SegurosHero />
       <SegurosOfferings />
       <SegurosBenefits />
