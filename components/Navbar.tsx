@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Menu,
@@ -48,44 +49,14 @@ const solucionesItems: DropdownItem[] = [
 function TechPhiteLogo() {
   return (
     <Link href="/" className="flex items-center gap-2.5 group" aria-label="TechPhite – Inicio">
-      {/* Hexagon SVG icon */}
-      <div className="relative w-9 h-9 flex items-center justify-center">
-        <svg
-          viewBox="0 0 40 46"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-9 h-9 transition-transform duration-300 group-hover:rotate-[15deg]"
-        >
-          <path
-            d="M20 1L38 11V35L20 45L2 35V11L20 1Z"
-            fill="url(#hexGrad)"
-            stroke="url(#hexStroke)"
-            strokeWidth="1.5"
-          />
-          <defs>
-            <linearGradient id="hexGrad" x1="2" y1="1" x2="38" y2="45" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#38bdf8" stopOpacity="0.25" />
-              <stop offset="100%" stopColor="#0284c7" stopOpacity="0.12" />
-            </linearGradient>
-            <linearGradient id="hexStroke" x1="2" y1="1" x2="38" y2="45" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#38bdf8" />
-              <stop offset="100%" stopColor="#7dd3fc" />
-            </linearGradient>
-          </defs>
-          {/* Inner code brackets */}
-          <text
-            x="50%"
-            y="55%"
-            dominantBaseline="middle"
-            textAnchor="middle"
-            fontSize="16"
-            fontWeight="700"
-            fontFamily="monospace"
-            fill="#38bdf8"
-          >
-            {'</>'}
-          </text>
-        </svg>
+      <div className="relative w-10 h-10 flex items-center justify-center">
+        <Image 
+          src="/logo.png" 
+          alt="TechPhite Logo" 
+          width={40} 
+          height={40} 
+          className="object-contain transition-transform duration-300 group-hover:scale-105" 
+        />
       </div>
 
       {/* Wordmark */}

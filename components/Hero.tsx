@@ -33,7 +33,7 @@ const itemVariants: Variants = {
 const BlurText = ({ text, className = "", delayOffset = 0 }: { text: string; className?: string; delayOffset?: number }) => {
   const words = text.split(" ");
   return (
-    <span className={`inline-block ${className}`}>
+    <span className="inline-block">
       {words.map((word, index) => (
         <motion.span
           key={index}
@@ -42,7 +42,7 @@ const BlurText = ({ text, className = "", delayOffset = 0 }: { text: string; cla
           transition={{ duration: 0.8, delay: delayOffset + index * 0.05, ease: 'easeOut' }}
           className="inline-block mr-[0.25em] last:mr-0"
         >
-          {word}
+          <span className={className}>{word}</span>
         </motion.span>
       ))}
     </span>
