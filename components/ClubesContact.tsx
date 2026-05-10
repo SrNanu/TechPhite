@@ -1,31 +1,51 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Send, Building, User, Mail, Phone, MessageSquare } from 'lucide-react';
+import { Send, Building, User, Mail, Phone, MessageSquare, CheckCircle2, AlertCircle } from 'lucide-react';
 import { useState } from 'react';
 
 export default function ClubesContact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [form, setForm] = useState({
+    nombre: '', institucion: '', email: '', telefono: '', mensaje: '',
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setForm(prev => ({ ...prev, [e.target.id]: e.target.value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulación de envío
-    setTimeout(() => {
-      setIsSubmitting(false);
+    setError(null);
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...form, rubro: form.institucion }),
+      });
+      const data = await res.json();
+
+      if (!res.ok || !data.ok) throw new Error(data.error ?? 'Error desconocido');
+
       setIsSuccess(true);
-      // Ocultar mensaje de éxito después de 5 segundos
-      setTimeout(() => setIsSuccess(false), 5000);
-    }, 1500);
+      setForm({ nombre: '', institucion: '', email: '', telefono: '', mensaje: '' });
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : 'No se pudo enviar el mensaje. Intenta de nuevo.';
+      setError(message);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const inputClasses = "w-full bg-slate-950/50 border border-white/10 text-slate-200 rounded-xl py-3 pl-12 pr-4 placeholder-slate-500 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-all duration-200";
 
   return (
     <section id="contacto" className="py-24 bg-slate-950 relative overflow-hidden">
-      {/* Background Effect */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(249,115,22,0.08),transparent_50%)]"></div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -61,134 +81,103 @@ export default function ClubesContact() {
           >
             <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500/10 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none"></div>
 
-            <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                
-                {/* Nombre */}
-                <div className="space-y-2">
-                  <label htmlFor="nombre" className="text-sm font-medium text-slate-300 ml-1">Tu Nombre</label>
-                  <div className="relative">
-                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                      <User className="h-5 w-5 text-slate-500" />
-                    </div>
-                    <input
-                      type="text"
-                      id="nombre"
-                      required
-                      className={inputClasses}
-                      placeholder="Ej. Juan Pérez"
-                    />
-                  </div>
-                </div>
-
-                {/* Institución */}
-                <div className="space-y-2">
-                  <label htmlFor="institucion" className="text-sm font-medium text-slate-300 ml-1">Club o Institución</label>
-                  <div className="relative">
-                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                      <Building className="h-5 w-5 text-slate-500" />
-                    </div>
-                    <input
-                      type="text"
-                      id="institucion"
-                      required
-                      className={inputClasses}
-                      placeholder="Ej. Club Atlético Central"
-                    />
-                  </div>
-                </div>
-
-                {/* Email */}
-                <div className="space-y-2">
-                  <label htmlFor="email" className="text-sm font-medium text-slate-300 ml-1">Correo Electrónico</label>
-                  <div className="relative">
-                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                      <Mail className="h-5 w-5 text-slate-500" />
-                    </div>
-                    <input
-                      type="email"
-                      id="email"
-                      required
-                      className={inputClasses}
-                      placeholder="tu@email.com"
-                    />
-                  </div>
-                </div>
-
-                {/* Teléfono */}
-                <div className="space-y-2">
-                  <label htmlFor="telefono" className="text-sm font-medium text-slate-300 ml-1">Teléfono / WhatsApp</label>
-                  <div className="relative">
-                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                      <Phone className="h-5 w-5 text-slate-500" />
-                    </div>
-                    <input
-                      type="tel"
-                      id="telefono"
-                      className={inputClasses}
-                      placeholder="+54 9 ..."
-                    />
-                  </div>
-                </div>
-              </div>
-
-              {/* Mensaje */}
-              <div className="space-y-2">
-                <label htmlFor="mensaje" className="text-sm font-medium text-slate-300 ml-1">¿Cómo podemos ayudarte?</label>
-                <div className="relative">
-                  <div className="absolute top-4 left-4 pointer-events-none">
-                    <MessageSquare className="h-5 w-5 text-slate-500" />
-                  </div>
-                  <textarea
-                    id="mensaje"
-                    rows={4}
-                    required
-                    className="w-full bg-slate-950/50 border border-white/10 text-slate-200 rounded-xl py-3 pl-12 pr-4 placeholder-slate-500 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-all duration-200 resize-none"
-                    placeholder="Contanos brevemente qué necesitás resolver..."
-                  ></textarea>
-                </div>
-              </div>
-
-              {/* Mensaje de Éxito Simulado */}
-              {isSuccess && (
-                <motion.div 
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: 'auto' }}
-                  className="bg-green-500/10 border border-green-500/50 text-green-400 p-4 rounded-xl flex items-center justify-center text-sm font-medium"
-                >
-                  ¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.
-                </motion.div>
-              )}
-
-              {/* Botón */}
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="
-                  w-full inline-flex items-center justify-center gap-2
-                  bg-orange-500 hover:bg-orange-600
-                  text-white font-bold text-lg
-                  py-4 rounded-full
-                  shadow-[0_0_20px_rgba(249,115,22,0.3)]
-                  hover:shadow-[0_0_32px_rgba(249,115,22,0.5)]
-                  hover:scale-[1.02] active:scale-100
-                  transition-all duration-300
-                  disabled:opacity-70 disabled:hover:scale-100
-                "
+            {isSuccess ? (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="flex flex-col items-center justify-center gap-4 py-12 text-center"
               >
-                {isSubmitting ? (
-                  <span className="flex items-center gap-2">
-                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                    Enviando...
-                  </span>
-                ) : (
-                  <span className="flex items-center gap-2">
-                    Quiero que me contacten
-                    <Send className="w-5 h-5" />
-                  </span>
+                <CheckCircle2 className="w-16 h-16 text-green-400" />
+                <h3 className="text-2xl font-bold text-white">¡Mensaje enviado!</h3>
+                <p className="text-slate-400 max-w-sm">Recibimos tu consulta. Nos ponemos en contacto a la brevedad.</p>
+                <button
+                  onClick={() => setIsSuccess(false)}
+                  className="mt-4 text-sm text-slate-500 hover:text-slate-300 transition-colors"
+                >
+                  Enviar otro mensaje
+                </button>
+              </motion.div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  
+                  <div className="space-y-2">
+                    <label htmlFor="nombre" className="text-sm font-medium text-slate-300 ml-1">Tu Nombre</label>
+                    <div className="relative">
+                      <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                        <User className="h-5 w-5 text-slate-500" />
+                      </div>
+                      <input type="text" id="nombre" required value={form.nombre} onChange={handleChange} className={inputClasses} placeholder="Ej. Juan Pérez" />
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <label htmlFor="institucion" className="text-sm font-medium text-slate-300 ml-1">Club o Institución</label>
+                    <div className="relative">
+                      <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                        <Building className="h-5 w-5 text-slate-500" />
+                      </div>
+                      <input type="text" id="institucion" required value={form.institucion} onChange={handleChange} className={inputClasses} placeholder="Ej. Club Atlético Central" />
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <label htmlFor="email" className="text-sm font-medium text-slate-300 ml-1">Correo Electrónico</label>
+                    <div className="relative">
+                      <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                        <Mail className="h-5 w-5 text-slate-500" />
+                      </div>
+                      <input type="email" id="email" required value={form.email} onChange={handleChange} className={inputClasses} placeholder="tu@email.com" />
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <label htmlFor="telefono" className="text-sm font-medium text-slate-300 ml-1">Teléfono / WhatsApp</label>
+                    <div className="relative">
+                      <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                        <Phone className="h-5 w-5 text-slate-500" />
+                      </div>
+                      <input type="tel" id="telefono" value={form.telefono} onChange={handleChange} className={inputClasses} placeholder="+54 9 ..." />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label htmlFor="mensaje" className="text-sm font-medium text-slate-300 ml-1">¿Cómo podemos ayudarte?</label>
+                  <div className="relative">
+                    <div className="absolute top-4 left-4 pointer-events-none">
+                      <MessageSquare className="h-5 w-5 text-slate-500" />
+                    </div>
+                    <textarea id="mensaje" rows={4} required value={form.mensaje} onChange={handleChange} className="w-full bg-slate-950/50 border border-white/10 text-slate-200 rounded-xl py-3 pl-12 pr-4 placeholder-slate-500 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-all duration-200 resize-none" placeholder="Contanos brevemente qué necesitás resolver..."></textarea>
+                  </div>
+                </div>
+
+                {error && (
+                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex items-center gap-2 bg-red-500/10 border border-red-500/30 text-red-400 p-4 rounded-xl text-sm">
+                    <AlertCircle className="w-4 h-4 shrink-0" />
+                    {error}
+                  </motion.div>
                 )}
-              </button>
-            </form>
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full inline-flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold text-lg py-4 rounded-full shadow-[0_0_20px_rgba(249,115,22,0.3)] hover:shadow-[0_0_32px_rgba(249,115,22,0.5)] hover:scale-[1.02] active:scale-100 transition-all duration-300 disabled:opacity-70 disabled:hover:scale-100"
+                >
+                  {isSubmitting ? (
+                    <span className="flex items-center gap-2">
+                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                      Enviando...
+                    </span>
+                  ) : (
+                    <span className="flex items-center gap-2">
+                      Quiero que me contacten
+                      <Send className="w-5 h-5" />
+                    </span>
+                  )}
+                </button>
+              </form>
+            )}
           </motion.div>
         </div>
       </div>
