@@ -1,5 +1,6 @@
 'use client';
 
+import { useRef, useState } from 'react';
 import { motion, Variants } from 'framer-motion';
 import { ArrowRight, Clock, TrendingUp } from 'lucide-react';
 
@@ -27,6 +28,86 @@ const containerVariants: Variants = {
 const itemVariants: Variants = {
   hidden: { opacity: 0, y: 28 },
   show: { opacity: 1, y: 0, transition: { duration: 0.65, ease: 'easeOut' } },
+};
+
+const BlurText = ({ text, className = "", delayOffset = 0 }: { text: string; className?: string; delayOffset?: number }) => {
+  const words = text.split(" ");
+  return (
+    <span className={`inline-block ${className}`}>
+      {words.map((word, index) => (
+        <motion.span
+          key={index}
+          initial={{ filter: 'blur(10px)', opacity: 0, y: 5 }}
+          animate={{ filter: 'blur(0px)', opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: delayOffset + index * 0.05, ease: 'easeOut' }}
+          className="inline-block mr-[0.25em] last:mr-0"
+        >
+          {word}
+        </motion.span>
+      ))}
+    </span>
+  );
+};
+
+const ShinyText = ({ text, className = "", variants }: { text: string; className?: string; variants?: any }) => {
+  return (
+    <>
+      <style>{`
+        @keyframes shine-hero-text {
+          0% { background-position: 200% center; }
+          100% { background-position: -200% center; }
+        }
+      `}</style>
+      <motion.p
+        variants={variants}
+        className={`text-transparent bg-clip-text ${className}`}
+        style={{
+          backgroundImage: 'linear-gradient(120deg, #94a3b8 40%, #ffffff 50%, #94a3b8 60%)',
+          backgroundSize: '200% auto',
+          animation: 'shine-hero-text 4s linear infinite',
+        }}
+      >
+        {text}
+      </motion.p>
+    </>
+  );
+};
+
+const MagneticButton = ({ children, onClick, className, id }: any) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!containerRef.current) return;
+    const { clientX, clientY } = e;
+    const { left, top, width, height } = containerRef.current.getBoundingClientRect();
+    const x = (clientX - (left + width / 2)) * 0.2;
+    const y = (clientY - (top + height / 2)) * 0.2;
+    setPosition({ x, y });
+  };
+
+  const handleMouseLeave = () => {
+    setPosition({ x: 0, y: 0 });
+  };
+
+  return (
+    <div
+      ref={containerRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className="inline-block"
+    >
+      <motion.button
+        id={id}
+        animate={{ x: position.x, y: position.y }}
+        transition={{ type: 'spring', stiffness: 150, damping: 15, mass: 0.1 }}
+        onClick={onClick}
+        className={className}
+      >
+        {children}
+      </motion.button>
+    </div>
+  );
 };
 
 export default function Hero() {
@@ -69,25 +150,25 @@ export default function Hero() {
             variants={itemVariants}
             className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-6 tracking-tight"
           >
-            <span className="text-slate-50">Transformación digital</span>
+            <BlurText text="Transformación digital" className="text-slate-50" />
             <br />
-            <span className="bg-gradient-to-r from-orange-500 via-orange-400 to-rose-500 text-transparent bg-clip-text">
-              para negocios reales
-            </span>
+            <BlurText 
+              text="para negocios reales" 
+              className="bg-gradient-to-r from-orange-500 via-orange-400 to-rose-500 text-transparent bg-clip-text"
+              delayOffset={0.3}
+            />
           </motion.h1>
 
           {/* Subtitle */}
-          <motion.p
+          <ShinyText
             variants={itemVariants}
-            className="text-base sm:text-lg text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed"
-          >
-            Encontrá la solución exacta para tu rubro. Sistemas de gestión, catálogos online y
-            páginas web diseñadas para hacer crecer tu negocio.
-          </motion.p>
+            className="text-base sm:text-lg mb-10 max-w-2xl mx-auto leading-relaxed text-center"
+            text="Encontrá la solución exacta para tu rubro. Sistemas de gestión, catálogos online y páginas web diseñadas para hacer crecer tu negocio."
+          />
 
           {/* CTA */}
           <motion.div variants={itemVariants} className="flex justify-center">
-            <button
+            <MagneticButton
               id="hero-cta-btn"
               onClick={() =>
                 document.getElementById('industrias')?.scrollIntoView({ behavior: 'smooth' })
@@ -108,7 +189,7 @@ export default function Hero() {
                 size={18}
                 className="transition-transform duration-300 group-hover:translate-x-1"
               />
-            </button>
+            </MagneticButton>
           </motion.div>
 
           {/* ── Stats cards ── */}
