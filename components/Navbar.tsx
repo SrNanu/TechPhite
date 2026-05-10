@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
+import ContactModal from '@/components/ContactModal';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Menu,
@@ -236,6 +237,7 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileSolucionesOpen, setIsMobileSolucionesOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const pathname = usePathname();
 
   // Scroll detection for enhanced glass shadow
@@ -290,7 +292,7 @@ export default function Navbar() {
             <div className="flex items-center gap-3">
               {/* Desktop CTA */}
               <div className="hidden md:block">
-                <CTAButton />
+                <CTAButton onClick={() => setIsModalOpen(true)} />
               </div>
 
               {/* Mobile hamburger */}
@@ -412,7 +414,7 @@ export default function Navbar() {
                   className="w-full justify-center"
                   onClick={() => {
                     setIsMobileMenuOpen(false);
-                    document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' });
+                    setIsModalOpen(true);
                   }}
                 />
               </div>
@@ -420,6 +422,9 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Contact Modal */}
+      {isModalOpen && <ContactModal onClose={() => setIsModalOpen(false)} />}
     </>
   );
 }
