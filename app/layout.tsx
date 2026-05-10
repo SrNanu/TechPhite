@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google';
 import Script from 'next/script';
 import { Toaster } from '@/components/ui/sonner';
 import Navbar from '@/components/Navbar';
+import WhatsAppButton from '@/components/WhatsAppButton';
 
 const inter = Inter({ subsets: ['latin'], weight: ['300', '400', '600', '700'] });
 
@@ -53,6 +54,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Toaster />
+        <WhatsAppButton />
         {/* <Script 
           src="https://herramientas-umami.i41qxr.easypanel.host/script.js" 
           data-website-id="478861e3-b6f9-4f4a-8989-d32a08d3f6cf" 
