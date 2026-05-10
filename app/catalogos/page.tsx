@@ -9,13 +9,15 @@ import CatalogosContact from '@/components/CatalogosContact';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'TechPhite AutoCat | Catálogos Online para Comercios',
-  description: 'Cargás el producto una sola vez y se publica en tu web, WhatsApp y redes al instante. Ideal para concesionarias y distribuidores.',
+  title: 'TechPhite Catálogos | Catálogos Online para Comercios y Mayoristas',
+  description: 'Tu negocio abierto 24/7. Exhibí tus productos, recibí pedidos y actualizá precios en tiempo real. Ideal para comercios, distribuidores y mayoristas.',
 };
 
 export default function CatalogosPage() {
   return (
-    <main className="min-h-screen bg-techphite-darker">
+    <main className="min-h-screen bg-slate-950 relative">
+      {/* Ambient glow blob */}
+      <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] rounded-full bg-orange-900/10 blur-[120px]" />
 
       <CatalogosHero />
       <CatalogosProblems />

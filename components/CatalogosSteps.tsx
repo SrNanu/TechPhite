@@ -22,7 +22,7 @@ const steps = [
 
 export default function CatalogosSteps() {
   return (
-    <section className="py-24 bg-techphite-darker border-t border-gray-800">
+    <section className="py-24 bg-slate-950 border-t border-white/5">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <motion.h2
@@ -39,7 +39,7 @@ export default function CatalogosSteps() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-xl text-gray-400 max-w-2xl mx-auto"
+            className="text-xl text-slate-400 max-w-2xl mx-auto"
           >
             Implementación súper rápida para que no pierdas ni un día de ventas.
           </motion.p>
@@ -47,8 +47,8 @@ export default function CatalogosSteps() {
 
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
-            {/* Línea conectora visible en desktop */}
-            <div className="hidden md:block absolute top-12 left-1/6 right-1/6 h-0.5 bg-gradient-to-r from-transparent via-techphite-cyan/30 to-transparent z-0"></div>
+            {/* Connector line for desktop */}
+            <div className="hidden md:block absolute top-8 left-[16%] right-[16%] h-px bg-gradient-to-r from-transparent via-orange-500/30 to-transparent z-0"></div>
 
             {steps.map((step, index) => (
               <motion.div
@@ -59,14 +59,14 @@ export default function CatalogosSteps() {
                 transition={{ duration: 0.5, delay: index * 0.2 }}
                 className="relative z-10 flex flex-col items-center text-center group"
               >
-                <div className="w-24 h-24 rounded-full bg-techphite-darker border-4 border-techphite-dark flex items-center justify-center mb-6 shadow-[0_0_20px_rgba(0,194,168,0.1)] group-hover:border-techphite-cyan transition-colors duration-300">
-                  <span className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-500 group-hover:from-techphite-cyan group-hover:to-blue-400 transition-colors">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-orange-500/20 to-rose-500/10 border border-orange-500/30 flex items-center justify-center mb-6 shadow-[0_0_15px_rgba(249,115,22,0.2)] group-hover:shadow-[0_0_25px_rgba(249,115,22,0.35)] transition-all duration-300">
+                  <span className="text-2xl font-bold text-orange-500">
                     {step.number}
                   </span>
                 </div>
                 
                 <h3 className="text-xl font-bold text-white mb-4 px-4">{step.title}</h3>
-                <p className="text-gray-400 leading-relaxed px-4">{step.description}</p>
+                <p className="text-slate-400 leading-relaxed px-4">{step.description}</p>
               </motion.div>
             ))}
           </div>
