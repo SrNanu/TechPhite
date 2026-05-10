@@ -15,7 +15,9 @@ export const metadata: Metadata = {
 
 export default function ClubesPage() {
   return (
-    <main className="min-h-screen bg-techphite-darker">
+    <main className="min-h-screen bg-slate-950 relative">
+      {/* Ambient glow blob */}
+      <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] rounded-full bg-orange-900/10 blur-[120px]" />
 
       <ClubesHero />
       <ClubesProblems />

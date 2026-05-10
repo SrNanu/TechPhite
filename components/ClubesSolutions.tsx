@@ -23,9 +23,9 @@ const solutions = [
 
 export default function ClubesSolutions() {
   return (
-    <section className="py-24 bg-techphite-darker relative overflow-hidden">
-      {/* Elementos decorativos de fondo */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-[radial-gradient(ellipse_at_center,rgba(0,194,168,0.05),transparent_70%)]"></div>
+    <section className="py-24 bg-slate-950 relative overflow-hidden">
+      {/* Decorative background */}
+      <div className="absolute top-0 right-0 w-[500px] h-[400px] bg-orange-900/10 rounded-full blur-[120px] pointer-events-none" />
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
@@ -36,14 +36,14 @@ export default function ClubesSolutions() {
             transition={{ duration: 0.5 }}
             className="text-4xl md:text-5xl font-bold mb-4 text-white"
           >
-            Con <span className="text-transparent bg-clip-text bg-gradient-to-r from-techphite-cyan to-blue-400">TechPhite Clubes</span>, esto cambia
+            Con <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-rose-500">TechPhite Clubes</span>, esto cambia
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-xl text-gray-400 max-w-2xl mx-auto"
+            className="text-xl text-slate-400 max-w-2xl mx-auto"
           >
             Te damos una herramienta profesional diseñada para simplificar tu día a día.
           </motion.p>
@@ -57,16 +57,14 @@ export default function ClubesSolutions() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="p-8 rounded-2xl glass-effect border border-gray-800 hover:border-techphite-cyan/50 transition-colors relative overflow-hidden group"
+              className="bg-gradient-to-br from-slate-900 to-slate-900/40 border border-white/5 backdrop-blur-sm rounded-3xl p-8 hover:-translate-y-1 hover:border-white/10 transition-all duration-300"
             >
-              <div className="absolute top-0 right-0 w-24 h-24 bg-techphite-cyan/5 rounded-full blur-2xl -mr-8 -mt-8 group-hover:bg-techphite-cyan/10 transition-colors"></div>
-              
-              <div className="w-14 h-14 rounded-xl bg-techphite-cyan/10 flex items-center justify-center mb-6 text-techphite-cyan">
-                <solution.icon className="w-7 h-7" />
+              <div className="bg-orange-500/10 p-3 rounded-xl w-fit mb-6">
+                <solution.icon className="w-7 h-7 text-orange-500" />
               </div>
               
-              <h3 className="text-xl font-bold text-white mb-3 relative z-10">{solution.title}</h3>
-              <p className="text-gray-400 leading-relaxed relative z-10">{solution.description}</p>
+              <h3 className="text-xl font-bold text-white mb-3">{solution.title}</h3>
+              <p className="text-slate-400 leading-relaxed">{solution.description}</p>
             </motion.div>
           ))}
         </div>

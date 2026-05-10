@@ -23,8 +23,11 @@ const problems = [
 
 export default function ClubesProblems() {
   return (
-    <section className="py-24 bg-techphite-dark">
-      <div className="container mx-auto px-4">
+    <section className="py-24 bg-slate-950 relative overflow-hidden">
+      {/* Subtle background accent */}
+      <div className="absolute top-0 right-0 w-[400px] h-[300px] bg-red-900/10 rounded-full blur-[100px] pointer-events-none" />
+
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -40,7 +43,7 @@ export default function ClubesProblems() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-xl text-gray-400 max-w-2xl mx-auto"
+            className="text-xl text-slate-400 max-w-2xl mx-auto"
           >
             Sabemos que gestionar un club con herramientas viejas es agotador y propenso a errores.
           </motion.p>
@@ -54,16 +57,14 @@ export default function ClubesProblems() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="p-8 rounded-2xl bg-techphite-darker border border-red-900/30 hover:border-red-500/50 transition-colors relative overflow-hidden group"
+              className="bg-gradient-to-br from-slate-900 to-slate-900/40 border border-white/5 backdrop-blur-sm rounded-3xl p-8 hover:-translate-y-1 hover:border-white/10 transition-all duration-300"
             >
-              <div className="absolute top-0 right-0 w-24 h-24 bg-red-500/5 rounded-full blur-2xl -mr-8 -mt-8 group-hover:bg-red-500/10 transition-colors"></div>
-              
-              <div className="w-14 h-14 rounded-xl bg-red-500/10 flex items-center justify-center mb-6 text-red-500">
-                <problem.icon className="w-7 h-7" />
+              <div className="bg-red-500/10 p-3 rounded-xl w-fit mb-6">
+                <problem.icon className="w-7 h-7 text-red-400" />
               </div>
               
-              <h3 className="text-xl font-bold text-white mb-3 relative z-10">{problem.title}</h3>
-              <p className="text-gray-400 leading-relaxed relative z-10">{problem.description}</p>
+              <h3 className="text-xl font-bold text-white mb-3">{problem.title}</h3>
+              <p className="text-slate-400 leading-relaxed">{problem.description}</p>
             </motion.div>
           ))}
         </div>
