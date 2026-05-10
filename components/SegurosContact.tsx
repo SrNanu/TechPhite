@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Button } from '@/components/ui/button';
 import { Send, Shield, User, Mail, Phone } from 'lucide-react';
 import { useState } from 'react';
 
@@ -22,10 +21,12 @@ export default function SegurosContact() {
     }, 1500);
   };
 
+  const inputClasses = "w-full bg-slate-950/50 border border-white/10 text-slate-200 rounded-xl py-3 pl-12 pr-4 placeholder-slate-500 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-all duration-200";
+
   return (
-    <section id="contacto" className="py-24 bg-techphite-dark relative overflow-hidden">
+    <section id="contacto" className="py-24 bg-slate-950 relative overflow-hidden">
       {/* Background Effect */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(16,185,129,0.05),transparent_50%)]"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(14,165,233,0.08),transparent_50%)]"></div>
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto">
@@ -45,7 +46,7 @@ export default function SegurosContact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-xl text-gray-400"
+              className="text-xl text-slate-400"
             >
               Dejanos tus datos y te asesoramos sobre cómo mejorar tu imagen digital.
             </motion.p>
@@ -56,25 +57,25 @@ export default function SegurosContact() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="glass-effect rounded-2xl p-8 md:p-12 border border-gray-800 shadow-2xl relative"
+            className="bg-slate-900/40 border border-white/10 rounded-[2rem] p-8 md:p-12 shadow-2xl backdrop-blur-sm relative"
           >
-            <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none"></div>
+            <div className="absolute top-0 right-0 w-32 h-32 bg-sky-500/10 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none"></div>
 
             <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 
                 {/* Nombre */}
                 <div className="space-y-2">
-                  <label htmlFor="nombre" className="text-sm font-medium text-gray-300 ml-1">Tu Nombre / Productora</label>
+                  <label htmlFor="nombre" className="text-sm font-medium text-slate-300 ml-1">Tu Nombre / Productora</label>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                      <User className="h-5 w-5 text-gray-500" />
+                      <User className="h-5 w-5 text-slate-500" />
                     </div>
                     <input
                       type="text"
                       id="nombre"
                       required
-                      className="w-full bg-techphite-darker border border-gray-700 rounded-xl py-3 pl-12 pr-4 text-white placeholder-gray-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors"
+                      className={inputClasses}
                       placeholder="Ej. Laura Gómez Seguros"
                     />
                   </div>
@@ -82,16 +83,16 @@ export default function SegurosContact() {
 
                 {/* Aseguradora */}
                 <div className="space-y-2">
-                  <label htmlFor="aseguradora" className="text-sm font-medium text-gray-300 ml-1">Aseguradora/s principal/es</label>
+                  <label htmlFor="aseguradora" className="text-sm font-medium text-slate-300 ml-1">Aseguradora/s principal/es</label>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                      <Shield className="h-5 w-5 text-gray-500" />
+                      <Shield className="h-5 w-5 text-slate-500" />
                     </div>
                     <input
                       type="text"
                       id="aseguradora"
                       required
-                      className="w-full bg-techphite-darker border border-gray-700 rounded-xl py-3 pl-12 pr-4 text-white placeholder-gray-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors"
+                      className={inputClasses}
                       placeholder="Ej. Sancor, San Cristóbal, etc."
                     />
                   </div>
@@ -99,16 +100,16 @@ export default function SegurosContact() {
 
                 {/* Email */}
                 <div className="space-y-2">
-                  <label htmlFor="email" className="text-sm font-medium text-gray-300 ml-1">Correo Electrónico</label>
+                  <label htmlFor="email" className="text-sm font-medium text-slate-300 ml-1">Correo Electrónico</label>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                      <Mail className="h-5 w-5 text-gray-500" />
+                      <Mail className="h-5 w-5 text-slate-500" />
                     </div>
                     <input
                       type="email"
                       id="email"
                       required
-                      className="w-full bg-techphite-darker border border-gray-700 rounded-xl py-3 pl-12 pr-4 text-white placeholder-gray-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors"
+                      className={inputClasses}
                       placeholder="tu@email.com"
                     />
                   </div>
@@ -116,15 +117,15 @@ export default function SegurosContact() {
 
                 {/* Teléfono */}
                 <div className="space-y-2">
-                  <label htmlFor="telefono" className="text-sm font-medium text-gray-300 ml-1">Teléfono / WhatsApp</label>
+                  <label htmlFor="telefono" className="text-sm font-medium text-slate-300 ml-1">Teléfono / WhatsApp</label>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                      <Phone className="h-5 w-5 text-gray-500" />
+                      <Phone className="h-5 w-5 text-slate-500" />
                     </div>
                     <input
                       type="tel"
                       id="telefono"
-                      className="w-full bg-techphite-darker border border-gray-700 rounded-xl py-3 pl-12 pr-4 text-white placeholder-gray-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors"
+                      className={inputClasses}
                       placeholder="+54 9 ..."
                     />
                   </div>
@@ -143,25 +144,33 @@ export default function SegurosContact() {
               )}
 
               {/* Botón */}
-              <div className="pt-4">
-                <Button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-6 text-lg rounded-xl transition-all shadow-[0_0_15px_rgba(249,115,22,0.3)] disabled:opacity-70"
-                >
-                  {isSubmitting ? (
-                    <span className="flex items-center gap-2">
-                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                      Enviando...
-                    </span>
-                  ) : (
-                    <span className="flex items-center gap-2">
-                      Quiero más información
-                      <Send className="w-5 h-5" />
-                    </span>
-                  )}
-                </Button>
-              </div>
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="
+                  w-full inline-flex items-center justify-center gap-2
+                  bg-sky-500 hover:bg-sky-600
+                  text-white font-bold text-lg
+                  py-4 rounded-full
+                  shadow-[0_0_20px_rgba(14,165,233,0.3)]
+                  hover:shadow-[0_0_32px_rgba(14,165,233,0.5)]
+                  hover:scale-[1.02] active:scale-100
+                  transition-all duration-300
+                  disabled:opacity-70 disabled:hover:scale-100
+                "
+              >
+                {isSubmitting ? (
+                  <span className="flex items-center gap-2">
+                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                    Enviando...
+                  </span>
+                ) : (
+                  <span className="flex items-center gap-2">
+                    Quiero más información
+                    <Send className="w-5 h-5" />
+                  </span>
+                )}
+              </button>
             </form>
           </motion.div>
         </div>
