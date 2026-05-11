@@ -1,19 +1,21 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
-// Reusable transporter — created once per server lifecycle
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: process.env.GMAIL_USER,
-    pass: process.env.GMAIL_APP_PASSWORD,
-  },
-});
-
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
     const { nombre, email, telefono, mensaje, rubro, empresa, aseguradora, institucion } = body;
+
+    // Create transporter inside handler so env vars are always resolved at request time
+    const transporter = nodemailer.createTransport({
+      host: 'smtp.gmail.com',
+      port: 465,
+      secure: true, // SSL
+      auth: {
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_APP_PASSWORD,
+      },
+    });
 
     // Build a context-aware subject line based on which form sent it
     const origen = rubro ?? empresa ?? aseguradora ?? institucion ?? 'Web';
