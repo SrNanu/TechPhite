@@ -97,8 +97,8 @@ export async function POST(req: NextRequest) {
     `;
 
     await transporter.sendMail({
-      from: `"TechPhite Web" <${process.env.GMAIL_USER}>`,
-      to: process.env.GMAIL_USER,
+      from: `"TechPhite Web" <contacto@techphite.com>`,
+      to: 'contacto@techphite.com',
       replyTo: email,
       subject,
       html,
