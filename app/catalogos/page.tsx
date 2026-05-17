@@ -5,6 +5,7 @@ import CatalogosProblems from '@/components/CatalogosProblems';
 import CatalogosSolutions from '@/components/CatalogosSolutions';
 import CatalogosFeatures from '@/components/CatalogosFeatures';
 import CatalogosSteps from '@/components/CatalogosSteps';
+import CatalogosClients from '@/components/CatalogosClients';
 import CatalogosContact from '@/components/CatalogosContact';
 import { Metadata } from 'next';
 
@@ -24,6 +25,7 @@ export default function CatalogosPage() {
       <CatalogosSolutions />
       <CatalogosFeatures />
       <CatalogosSteps />
+      <CatalogosClients />
       <CatalogosContact />
       <Footer />
     </main>
