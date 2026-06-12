@@ -55,11 +55,11 @@ export default function RootLayout({
         {children}
         <Toaster />
         <WhatsAppButton />
-        {/* <Script 
+        <Script 
           src="https://herramientas-umami.i41qxr.easypanel.host/script.js" 
           data-website-id="478861e3-b6f9-4f4a-8989-d32a08d3f6cf" 
           strategy="afterInteractive"
-        /> */}
+        />
       </body>
     </html>
   );
