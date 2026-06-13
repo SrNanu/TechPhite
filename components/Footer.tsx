@@ -164,7 +164,7 @@ export default function Footer() {
           <p className="text-slate-500 text-sm">
             &copy; {new Date().getFullYear()} TechPhite. Todos los derechos reservados.
           </p>
-          <p className="text-slate-500 text-sm flex items-center gap-2">
+          <p className="text-slate-500 text-sm flex flex-wrap items-center justify-center gap-2">
             <span>
               Diseño y desarrollo con{' '}
               <span className="text-orange-500">♥</span>{' '}
@@ -175,7 +175,7 @@ export default function Footer() {
               alt="Islas Malvinas"
               width={50}
               height={11}
-              className="object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
+              className="object-contain opacity-70 hover:opacity-100 transition-opacity duration-300 flex-shrink-0"
             />
           </p>
         </motion.div>

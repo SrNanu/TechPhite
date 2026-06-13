@@ -168,14 +168,14 @@ export default function Hero() {
                 className="text-slate-50"
                 delayOffset={0.3}
               />
-              <span className="relative inline-flex items-center ml-2">
+              <span className="relative inline-flex items-center w-full sm:w-auto sm:ml-2 ml-0 justify-center">
                 {/* Invisible template to reserve space for the longest word */}
                 <span className="opacity-0 pointer-events-none select-none font-extrabold">
                   INSTITUCIÓN
                 </span>
                 
                 {/* Absolutely positioned animators */}
-                <span className="absolute inset-0 overflow-hidden flex items-center justify-start">
+                <span className="absolute inset-0 overflow-hidden flex items-center justify-center sm:justify-start">
                   <AnimatePresence mode="wait">
                     <motion.span
                       key={words[wordIndex]}
@@ -183,7 +183,7 @@ export default function Hero() {
                       animate={{ y: '0%', opacity: 1 }}
                       exit={{ y: '-100%', opacity: 0 }}
                       transition={{ duration: 0.4, ease: 'easeInOut' }}
-                      className="bg-gradient-to-r from-orange-500 via-orange-400 to-rose-500 text-transparent bg-clip-text font-extrabold text-left"
+                      className="bg-gradient-to-r from-orange-500 via-orange-400 to-rose-500 text-transparent bg-clip-text font-extrabold text-center sm:text-left"
                     >
                       {words[wordIndex]}
                     </motion.span>
