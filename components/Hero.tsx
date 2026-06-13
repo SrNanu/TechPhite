@@ -1,7 +1,7 @@
 'use client';
 
-import { useRef, useState } from 'react';
-import { motion, Variants } from 'framer-motion';
+import { useRef, useState, useEffect } from 'react';
+import { motion, Variants, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Clock, TrendingUp } from 'lucide-react';
 
 const stats = [
@@ -111,6 +111,16 @@ const MagneticButton = ({ children, onClick, className, id }: any) => {
 };
 
 export default function Hero() {
+  const [wordIndex, setWordIndex] = useState(0);
+  const words = ['CLUB', 'INSTITUCIÓN', 'PYME', 'NEGOCIO', 'EMPRESA'];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setWordIndex((prev) => (prev + 1) % words.length);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section
       id="home"
@@ -150,13 +160,37 @@ export default function Hero() {
             variants={itemVariants}
             className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-6 tracking-tight"
           >
-            <BlurText text="Transformación digital" className="text-slate-50" />
+            <BlurText text="TechPhite" className="text-slate-50" />
             <br />
-            <BlurText 
-              text="para negocios reales" 
-              className="bg-gradient-to-r from-orange-500 via-orange-400 to-rose-500 text-transparent bg-clip-text"
-              delayOffset={0.3}
-            />
+            <span className="inline-flex flex-wrap justify-center items-center">
+              <BlurText 
+                text="el motor de tu" 
+                className="text-slate-50"
+                delayOffset={0.3}
+              />
+              <span className="relative inline-flex items-center ml-2">
+                {/* Invisible template to reserve space for the longest word */}
+                <span className="opacity-0 pointer-events-none select-none font-extrabold">
+                  INSTITUCIÓN
+                </span>
+                
+                {/* Absolutely positioned animators */}
+                <span className="absolute inset-0 overflow-hidden flex items-center justify-start">
+                  <AnimatePresence mode="wait">
+                    <motion.span
+                      key={words[wordIndex]}
+                      initial={{ y: '100%', opacity: 0 }}
+                      animate={{ y: '0%', opacity: 1 }}
+                      exit={{ y: '-100%', opacity: 0 }}
+                      transition={{ duration: 0.4, ease: 'easeInOut' }}
+                      className="bg-gradient-to-r from-orange-500 via-orange-400 to-rose-500 text-transparent bg-clip-text font-extrabold text-left"
+                    >
+                      {words[wordIndex]}
+                    </motion.span>
+                  </AnimatePresence>
+                </span>
+              </span>
+            </span>
           </motion.h1>
 
           {/* Subtitle */}

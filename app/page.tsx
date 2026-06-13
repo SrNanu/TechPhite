@@ -2,6 +2,7 @@
 import Hero from '@/components/Hero';
 import Industries from '@/components/Industries';
 import WhyTechPhite from '@/components/WhyTechPhite';
+import AboutUs from '@/components/AboutUs';
 import Footer from '@/components/Footer';
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
       <Hero />
       <Industries />
       <WhyTechPhite />
+      <AboutUs />
       <Footer />
     </main>
   );

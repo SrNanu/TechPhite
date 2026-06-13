@@ -277,7 +277,14 @@ export default function Navbar() {
             <div className="hidden md:flex items-center gap-8">
               <NavLink href="/" label="Inicio" isActive={pathname === '/'} />
               <SolucionesDropdown />
-              <NavLink href="/#nosotros" label="Nosotros" isActive={false} />
+              <NavLink
+                href="/#nosotros"
+                label="Nosotros"
+                isActive={false}
+                onClick={() =>
+                  document.getElementById('nosotros')?.scrollIntoView({ behavior: 'smooth' })
+                }
+              />
               <NavLink
                 href="/#contacto"
                 label="Contacto"
@@ -390,7 +397,10 @@ export default function Navbar() {
               {/* Nosotros */}
               <Link
                 href="/#nosotros"
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  document.getElementById('nosotros')?.scrollIntoView({ behavior: 'smooth' });
+                }}
                 className="px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-colors"
               >
                 Nosotros

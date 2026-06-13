@@ -3,6 +3,7 @@
 import { motion, Variants } from 'framer-motion';
 import { Instagram, Mail, Phone } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const socialLinks = [
   { icon: Instagram, href: 'https://www.instagram.com/techphite/', label: 'Instagram' },
@@ -25,13 +26,13 @@ const solutions = [
 const contactItems = [
   {
     icon: Mail,
-    href: 'mailto:contacto@techphite.com',
-    label: 'contacto@techphite.com',
+    href: 'mailto:techphite.com@gmail.com',
+    label: 'techphite.com@gmail.com',
   },
   {
     icon: Phone,
-    href: 'tel:+5493416912227',
-    label: '+54 9 341 691-2227',
+    href: 'tel:+5493417526118',
+    label: '+54 9 341 752-6118',
   },
 ];
 
@@ -163,10 +164,19 @@ export default function Footer() {
           <p className="text-slate-500 text-sm">
             &copy; {new Date().getFullYear()} TechPhite. Todos los derechos reservados.
           </p>
-          <p className="text-slate-500 text-sm">
-            Diseño y desarrollo con{' '}
-            <span className="text-orange-500">♥</span>{' '}
-            en Argentina
+          <p className="text-slate-500 text-sm flex items-center gap-2">
+            <span>
+              Diseño y desarrollo con{' '}
+              <span className="text-orange-500">♥</span>{' '}
+              en Argentina
+            </span>
+            <Image
+              src="/islas.png"
+              alt="Islas Malvinas"
+              width={50}
+              height={11}
+              className="object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
+            />
           </p>
         </motion.div>
       </div>

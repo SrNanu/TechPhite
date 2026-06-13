@@ -56,7 +56,7 @@ export default function ContactModal({ onClose }: ContactModalProps) {
         <div className="flex flex-col gap-4">
           {/* WhatsApp — highlighted */}
           <a
-            href="https://wa.me/5493416912227?text=Hola%20TechPhite,%20vengo%20de%20la%20web%20y%20quiero%20m%C3%A1s%20info."
+            href="https://wa.me/5493417526118?text=Hola%20TechPhite,%20vengo%20de%20la%20web%20y%20quiero%20m%C3%A1s%20info."
             target="_blank"
             rel="noopener noreferrer"
             className="w-full flex items-center justify-center gap-3 bg-[#25D366]/10 text-[#25D366] hover:bg-[#25D366] hover:text-white border border-[#25D366]/20 py-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105"
@@ -76,11 +76,11 @@ export default function ContactModal({ onClose }: ContactModalProps) {
 
           {/* Email */}
           <a
-            href="mailto:contacto@techphite.com"
+            href="mailto:techphite.com@gmail.com"
             className="w-full flex items-center justify-center gap-3 bg-white/5 text-slate-300 hover:bg-white/10 border border-white/10 py-4 rounded-xl font-semibold transition-all duration-300"
           >
             <Mail size={20} className="shrink-0" />
-            contacto@techphite.com
+            techphite.com@gmail.com
           </a>
         </div>
       </div>

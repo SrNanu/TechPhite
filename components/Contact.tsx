@@ -33,7 +33,7 @@ export default function Contact() {
   };
 
   const handleWhatsApp = () => {
-    window.open('https://wa.me/5493416912227?text=Hola, estoy interesado en sus servicios', '_blank');
+    window.open('https://wa.me/5493417526118?text=Hola, estoy interesado en sus servicios', '_blank');
   };
 
   return (
@@ -75,8 +75,8 @@ export default function Contact() {
                   </div>
                   <div>
                     <h4 className="text-white font-semibold mb-1">Teléfono</h4>
-                    <a href="tel:+5493416912227" className="text-gray-400 hover:text-techphite-cyan transition-colors">
-                      +54 9 341 691-2227
+                    <a href="tel:+5493417526118" className="text-gray-400 hover:text-techphite-cyan transition-colors">
+                      +54 9 341 752-6118
                     </a>
                   </div>
                 </motion.div>
@@ -90,8 +90,8 @@ export default function Contact() {
                   </div>
                   <div>
                     <h4 className="text-white font-semibold mb-1">Email</h4>
-                    <a href="mailto:contacto@techphite.com" className="text-gray-400 hover:text-techphite-cyan transition-colors">
-                      contacto@techphite.com
+                    <a href="mailto:techphite.com@gmail.com" className="text-gray-400 hover:text-techphite-cyan transition-colors">
+                      techphite.com@gmail.com
                     </a>
                   </div>
                 </motion.div>
@@ -112,7 +112,7 @@ export default function Contact() {
             </div>
 
             <div>
-              <a href="https://wa.me/5493416912227?text=Hola, estoy interesado en sus servicios" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/5493417526118?text=Hola, estoy interesado en sus servicios" target="_blank" rel="noopener noreferrer">
               <Button
                 onClick={handleWhatsApp}
                 className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-6 text-lg"
