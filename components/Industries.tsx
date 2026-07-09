@@ -1,11 +1,23 @@
 'use client';
 
 import { motion, Variants } from 'framer-motion';
-import { Users, Store, Shield, ArrowRight } from 'lucide-react';
+import { Users, Store, Shield, ArrowRight, Home } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 
 const industries = [
+  {
+    title: 'Inmobiliarias',
+    description:
+      'Elevá la presentación de tus inmuebles con una web profesional. Destacá tus propiedades y cerrá más operaciones.',
+    icon: Home,
+    iconColor: 'text-amber-400',
+    iconBg: 'bg-amber-400/10',
+    link: '/inmobiliarias',
+    image: '/catalogo.webp',
+    accentColor: 'group-hover:shadow-[0_8px_40px_rgba(251,191,36,0.12)]',
+    arrowColor: 'text-amber-400',
+  },
   {
     title: 'Clubes e Instituciones',
     description:

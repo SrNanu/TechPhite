@@ -14,6 +14,7 @@ import {
   BookOpen,
   ShieldCheck,
   Zap,
+  Home,
 } from 'lucide-react';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -26,6 +27,12 @@ interface DropdownItem {
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 const solucionesItems: DropdownItem[] = [
+  {
+    label: 'Inmobiliarias',
+    href: '/inmobiliarias',
+    icon: <Home size={18} className="text-amber-400" />,
+    description: 'Plataformas web para bienes raíces y corredores',
+  },
   {
     label: 'Clubes e Instituciones',
     href: '/clubes',
