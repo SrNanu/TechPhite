@@ -2,7 +2,9 @@
 
 import { useRef, useState, useEffect } from 'react';
 import { motion, Variants, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Clock, TrendingUp } from 'lucide-react';
+import { ArrowRight, Clock, TrendingUp, Shield } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
 
 const stats = [
   {
@@ -140,15 +142,16 @@ export default function Hero() {
       </div>
 
       {/* ── Content ── */}
-      <div className="container mx-auto px-4 relative z-10">
-        <motion.div
-          className="max-w-4xl mx-auto text-center"
-          variants={containerVariants}
-          initial="hidden"
-          animate="show"
-        >
+      <div className="container mx-auto px-4 relative z-10 pt-20 lg:pt-0">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+          <motion.div
+            className="max-w-2xl mx-auto lg:mx-0 text-center lg:text-left"
+            variants={containerVariants}
+            initial="hidden"
+            animate="show"
+          >
           {/* Badge */}
-          <motion.div variants={itemVariants} className="mb-6 flex justify-center">
+          <motion.div variants={itemVariants} className="mb-6 flex justify-center lg:justify-start">
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm text-xs text-slate-400 font-medium tracking-wide">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
               Transformación digital · Soluciones reales
@@ -158,24 +161,24 @@ export default function Hero() {
           {/* H1 */}
           <motion.h1
             variants={itemVariants}
-            className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-6 tracking-tight"
+            className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-6 tracking-tight text-center lg:text-left"
           >
             <BlurText text="TechPhite" className="text-slate-50" />
             <br />
-            <span className="inline-flex flex-wrap justify-center items-center">
+            <span className="inline-flex flex-wrap justify-center lg:justify-start items-center w-full">
               <BlurText 
                 text="el motor de tu" 
                 className="text-slate-50"
                 delayOffset={0.3}
               />
-              <span className="relative inline-flex items-center w-full sm:w-auto sm:ml-2 ml-0 justify-center">
+              <span className="relative inline-flex items-center w-full sm:w-auto sm:ml-2 ml-0 justify-center lg:justify-start">
                 {/* Invisible template to reserve space for the longest word */}
                 <span className="opacity-0 pointer-events-none select-none font-extrabold">
                   INSTITUCIÓN
                 </span>
                 
                 {/* Absolutely positioned animators */}
-                <span className="absolute inset-0 overflow-hidden flex items-center justify-center sm:justify-start">
+                <span className="absolute inset-0 overflow-hidden flex items-center justify-center sm:justify-start lg:justify-start">
                   <AnimatePresence mode="wait">
                     <motion.span
                       key={words[wordIndex]}
@@ -196,12 +199,12 @@ export default function Hero() {
           {/* Subtitle */}
           <ShinyText
             variants={itemVariants}
-            className="text-base sm:text-lg mb-10 max-w-2xl mx-auto leading-relaxed text-center"
+            className="text-base sm:text-lg mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed text-center lg:text-left"
             text="Encontrá la solución exacta para tu rubro. Sistemas de gestión, catálogos online y páginas web diseñadas para hacer crecer tu negocio."
           />
 
           {/* CTA */}
-          <motion.div variants={itemVariants} className="flex justify-center">
+          <motion.div variants={itemVariants} className="flex justify-center lg:justify-start">
             <MagneticButton
               id="hero-cta-btn"
               onClick={() =>
@@ -229,7 +232,7 @@ export default function Hero() {
           {/* ── Stats cards ── */}
           <motion.div
             variants={itemVariants}
-            className="mt-20 pb-24 flex flex-wrap justify-center gap-4"
+            className="mt-16 pb-12 lg:pb-0 flex flex-wrap justify-center lg:justify-start gap-4"
           >
             {stats.map((stat) => (
               <div
@@ -250,6 +253,83 @@ export default function Hero() {
             ))}
           </motion.div>
         </motion.div>
+
+        {/* ── Right Column: Card ── */}
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="
+            group relative flex flex-col
+            bg-slate-900/40 backdrop-blur-sm
+            border border-white/5
+            rounded-2xl overflow-hidden
+            transition-all duration-300
+            hover:-translate-y-2
+            hover:border-white/10
+            hover:bg-slate-900/60
+            hover:shadow-[0_8px_40px_rgba(52,211,153,0.12)]
+            max-w-md mx-auto lg:ml-auto w-full
+            z-20
+          "
+        >
+          {/* ── Image container ── */}
+          <div className="overflow-hidden rounded-t-2xl relative aspect-video">
+            <div className="absolute inset-0 z-10 bg-slate-950/20 group-hover:bg-transparent transition-colors duration-500 pointer-events-none" />
+            <Image
+              src="/seguros.webp"
+              alt="Landing Pages"
+              fill
+              className="object-cover opacity-85 group-hover:opacity-100 mix-blend-luminosity group-hover:mix-blend-normal transition-all duration-500 group-hover:scale-105"
+            />
+            
+            {/* Corner Ribbon Banner */}
+            <div className="absolute top-10 -right-[4.5rem] z-20 w-[22rem] bg-red-600 text-white text-[14px] uppercase tracking-widest font-black py-2.5 shadow-xl transform rotate-45 flex justify-center items-center pointer-events-none">
+              {/* Ajusta left y top aquí para mover solo el texto */}
+              <span className="relative left-6 top-0">
+                OFERTA $15.000/mes
+              </span>
+            </div>
+          </div>
+
+          {/* ── Content ── */}
+          <div className="p-7 flex flex-col flex-grow">
+            <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-5 bg-emerald-400/10 text-emerald-400">
+              <Shield className="w-5 h-5" />
+            </div>
+
+            <h3 className="text-xl font-bold text-slate-100 mb-2 leading-snug">
+              Landing Pages
+            </h3>
+
+            <p className="text-slate-400 text-sm leading-relaxed flex-grow mb-6">
+              Presencia digital profesional para impulsar tu negocio. Captá clientes con una web a tu medida.
+            </p>
+
+            <div className="flex flex-col gap-4 mt-auto">
+              <Link
+                href="/landing-page"
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-400 hover:opacity-80 transition-opacity"
+              >
+                Explorar solución
+                <ArrowRight
+                  size={15}
+                  className="transition-transform duration-300 group-hover:translate-x-1.5"
+                />
+              </Link>
+
+              <a
+                href={`https://wa.me/5493417526118?text=${encodeURIComponent('Hola tech, quiero saber más sobre las landing page')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 w-full bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-2.5 rounded-xl transition-colors shadow-[0_0_15px_rgba(16,185,129,0.3)] hover:shadow-[0_0_25px_rgba(16,185,129,0.5)]"
+              >
+                Contratar ahora
+              </a>
+            </div>
+          </div>
+        </motion.div>
+        </div>
       </div>
 
       {/* ── Scroll indicator ── */}

@@ -14,7 +14,7 @@ const industries = [
     iconColor: 'text-amber-400',
     iconBg: 'bg-amber-400/10',
     link: '/inmobiliarias',
-    image: '/catalogo.webp',
+    image: '/inmobiliaria1.webp',
     accentColor: 'group-hover:shadow-[0_8px_40px_rgba(251,191,36,0.12)]',
     arrowColor: 'text-amber-400',
   },
@@ -41,18 +41,6 @@ const industries = [
     image: '/catalogo.webp',
     accentColor: 'group-hover:shadow-[0_8px_40px_rgba(251,146,60,0.12)]',
     arrowColor: 'text-orange-400',
-  },
-  {
-    title: 'Productores de Seguros',
-    description:
-      'Presencia digital profesional para asegurar tu futuro. Captá clientes con una web a tu medida.',
-    icon: Shield,
-    iconColor: 'text-emerald-400',
-    iconBg: 'bg-emerald-400/10',
-    link: '/seguros',
-    image: '/seguros.webp',
-    accentColor: 'group-hover:shadow-[0_8px_40px_rgba(52,211,153,0.12)]',
-    arrowColor: 'text-emerald-400',
   },
 ];
 
@@ -158,16 +146,18 @@ export default function Industries() {
                 </p>
 
                 {/* CTA link */}
-                <Link
-                  href={industry.link}
-                  className={`inline-flex items-center gap-1.5 text-sm font-semibold ${industry.arrowColor} hover:opacity-80 transition-opacity`}
-                >
-                  Explorar solución
-                  <ArrowRight
-                    size={15}
-                    className="transition-transform duration-300 group-hover:translate-x-1.5"
-                  />
-                </Link>
+                <div className="flex flex-col gap-4 mt-auto">
+                  <Link
+                    href={industry.link}
+                    className={`inline-flex items-center gap-1.5 text-sm font-semibold ${industry.arrowColor} hover:opacity-80 transition-opacity`}
+                  >
+                    Explorar solución
+                    <ArrowRight
+                      size={15}
+                      className="transition-transform duration-300 group-hover:translate-x-1.5"
+                    />
+                  </Link>
+                </div>
               </div>
 
               {/* Bottom accent line (appears on hover) */}

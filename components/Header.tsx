@@ -12,7 +12,7 @@ const navItems = [
   { label: 'Inicio', href: '/' },
   { label: 'Clubes', href: '/clubes' },
   { label: 'Catálogos', href: '/catalogos' },
-  { label: 'Seguros', href: '/seguros' },
+  { label: 'Landing Pages', href: '/landing-page' },
   { label: 'Contacto', href: '#contacto' },
 ];
 

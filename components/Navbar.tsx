@@ -46,10 +46,10 @@ const solucionesItems: DropdownItem[] = [
     description: 'Catálogos digitales interactivos y a medida',
   },
   {
-    label: 'Productores de Seguros',
-    href: '/seguros',
+    label: 'Landing Pages',
+    href: '/landing-page',
     icon: <ShieldCheck size={18} className="text-emerald-400" />,
-    description: 'Plataformas especializadas para el sector asegurador',
+    description: 'Landing pages de alta conversión para cualquier rubro',
   },
 ];
 

@@ -13,14 +13,14 @@ const quickLinks = [
   { label: 'Inicio', href: '/' },
   { label: 'Clubes', href: '/clubes' },
   { label: 'Catálogos', href: '/catalogos' },
-  { label: 'Seguros', href: '/seguros' },
+  { label: 'Landing Pages', href: '/landing-page' },
   { label: 'Contacto', href: '#contacto' },
 ];
 
 const solutions = [
   { label: 'Clubes e Instituciones', href: '/clubes' },
   { label: 'Catálogos de Productos', href: '/catalogos' },
-  { label: 'Productores de Seguros', href: '/seguros' },
+  { label: 'Landing Pages', href: '/landing-page' },
 ];
 
 const contactItems = [
